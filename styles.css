@@ -1,0 +1,267 @@
+/* Celulares y Tablets pequeñas */
+@media (max-width: 768px) {
+    body {
+        /* Reducimos el borde lateral verde para ganar espacio */
+        border-left: 20px solid rgb(23, 200, 156); 
+        padding-left: 5px;
+    }
+
+    #ContenedorRyC {
+        /* Cambiamos de lado a lado a uno sobre otro */
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    #Registros, #Contacto1 {
+        /* Ahora ocupan casi todo el ancho disponible */
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .product {
+        /* Ajustamos las tarjetas para que no se vean tan pequeñas */
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .header, #products, #Links {
+        /* Quitamos márgenes laterales forzados */
+        margin-left: 0;
+        margin-right: 10px;
+        padding: 20px; /* Menos relleno para pantallas chicas */
+    }
+}
+
+/* Pantallas Grandes */
+@media (min-width: 1200px) {
+    .header, #products, #Links {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Para el header */
+body{
+    border-left: 150px solid rgb(23, 200, 156);
+    padding-left: 10px;
+    margin: 0;
+}
+.header{
+    max-width: 1000px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color:rgb(242, 242, 209);
+    padding: 40px;
+    margin-top: 10px;
+}
+
+.header h2{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.header h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Para los productos estrellas*/
+
+#products h2 {
+    font-size: 1.3rem;      
+    text-align: left !important; 
+    margin-left: 20px;      
+    width: 100%;            
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#products {
+    max-width: 1000px;
+    margin-left: 8px;
+    margin-top: 10px;
+    margin-right: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px;
+    justify-content: center;
+    background-color: blanchedalmond;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product {
+    width: 200px; 
+    background-color: #fff; 
+    border: 5px solid rgb(31, 8, 8);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain; 
+    margin-bottom: 15px;
+}
+
+.nombreProducto {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.price {
+    color: rgb(110, 27, 22);
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+#InfoProducto {
+    font-size: 0.7em;
+    color: #555;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+}
+
+
+#ContenedorRyC{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+/*Para el registro*/
+
+#Registros{
+    background-color: rgb(228, 198, 92);
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 15px;
+    max-width: 50%;
+    margin-top: 10px;
+    flex: 1;
+}
+
+#Registros h4{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: brown;
+    text-align: left;
+}
+
+#Registros p{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+}
+
+#Registro {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid rgb(31, 8, 8);
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:small;
+}
+
+label{
+    display:grid;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+button{
+    width: 80;
+    padding: 15px;
+    background-color: rgb(0, 139, 53);
+    color: azure;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+/*Para el Contacto*/
+
+#Contacto1{
+    background-color: rgb(24, 197, 93);
+    margin-right: 8px;
+    padding: 15px;
+    max-width: 50%;
+    margin-top: 10px;
+    flex: 1;
+}
+
+#Contacto1 h4{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(31, 8, 8);
+    text-align: left;
+}
+
+#Contacto1 p{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+}
+
+#contacto {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid rgb(31, 8, 8);
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:small;
+}
+
+/* Para los Links*/
+
+#Links{
+    background-color: #73cae1;
+    margin-left: 8px;
+    margin-right: 8px;
+    max-width: 1000px;
+    padding: 40px;
+    margin-bottom: 8px;
+}
+
+#Links p{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+}
+
+a{
+    color: rgb(8, 92, 218);
+}
+
+a:hover{
+    color: brown;
+}
+
+button:hover{
+    background-color: #fff;
+    color:rgb(6, 37, 37);
+}
+

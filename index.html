@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <head>
+        <title>OH MY CAT SHOP</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <h1>Bienvenido a OH MY CAT SHOP :)</h1>
+            <p>Empresa 100% mexicana dedicada a la venta de productos para el cuidado gatuno.</p>
+            <hr>
+            <h2>Mision</h2>
+            <p id="Mision1">Nuestra mision es que cada dueño de un hermoso gatito tenga la disponibilidad de adquirir nuestros podructos especiales a un bajo costo y con una gran calidad.</p>
+            <hr>
+            <h2>Vision</h2>
+            <p id="Vision1">Poder llegar a cada casa mexicana donde tengan la dicha de tener un gato en sus vidas y ser parte de su historia.</p>
+            <hr>
+        </header>
+        <div id="products">
+            <h2>Algunos de nuestros productos estrella son:</h2>
+            <div class="product">
+                <img src="71SJiCIvngL-removebg-preview.png" alt="Rascador en forma de cactus">
+                <h3 class="nombreProducto">Rascador Cat-Us</h3>
+                <p class="price"><em>Price: <strong>$509.40</strong></em></p>
+                <p id="InfoProducto">El <strong>Rascador Cat-Us</strong> es un herramienta poderosa a la hora de entretener a tu mascota, diseñado especificamente para gatos curiosos y con garras afiladas.</p>
+            </div>
+            <div class="product">
+                <img src="comida_gatos_acana_bountiful_ACAABC00_M_01_4kg-removebg-preview.png" alt="Comida para gato premiau">
+                <h3 class="nombreProducto">Comida Premiau</h3>
+                <p class="price"><em>Price: <strong>$700.00</strong></em></p>
+                <p id="InfoProducto">Manejamos distintas marcas de Comida para Gato <strong>Premium</strong>, donde una de las mas vendidas, es la marca <strong>Acana</strong>, que es una marca reconocida por ofrecer recetas con proteínas de calidad y nutrientes esenciales, formuladas para proporcionar a los gatos una dieta equilibrada, natural y adaptada a sus necesidades biológicas.<br>Sus alimentos están diseñados para gatitos, adultos y gatos senior.</p>
+            </div>
+            <div class="product">
+                <img src="SmarCat5.jpg" alt="Arenero para gato automatico">
+                <h3 class="nombreProducto">Arenero SmartCat</h3>
+                <p class="price"><em>Special Price: <del>$9749.40</del> <strong>$6239.40</strong></em></p>
+                <p id="InfoProducto">Nuestro Arenero <strong>SmartCat</strong> es nuestro arenero con mas demanda debido a su increible sistema de limpieza automatica.<br> Con 10 sensores de alta precision que detienen el sistema de limpieza en cuanto sienten la presencia de tu gato y con un control absoluto por medio de tu celular, esta diseñado para esas personas que en ocasiones no tienen suficiente tiempo para limpiar los desechos de su amigo gatuno.</p>
+            </div>
+        </div>
+        <div id="ContenedorRyC">
+            <div id="Registros">
+                <h4>Registrate</h4>
+                <p id="Registrate">Registra tu numero de telefono o email para recibir actualizaciones acerca de nuevos productos, folletos informativos o descuentos imperdibles</p>
+                <form action="https://formsubmit.co/berenicealondra2006@gmail.com" method="post" id="Registro">
+                    <fieldset>
+                        <input type="hidden" name="_captcha" value="false">
+                        <legend>Registro</legend>
+                        <label for="first-name">Nombre:</label>
+                        <input type="text" id="first-name" name="first-name" required aria-required="true" placeholder="Juan">
+                        <br>
+                        <label for="last-name">Apellido:</label>
+                        <input type="text" id="last-name" name="last-name" required aria-required="true" placeholder="Lopez">
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required aria-required="true" placeholder="juan_lopez@ejemplo.com">
+                        <br>
+                        <label for="tel">Numero de Telefono (Opcional):</label>
+                        <input type="text" id="tel" name="tel" placeholder="1234567890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                        <br>
+                        <button type="submit">Registrarme :)</button>
+                        <button type="reset"> Restaurar </button>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div id="Contacto1">
+                <h4>Contactanos</h4>
+                <p>Envianos un Mensaje con tus Sugerencias o Opiniones acerca de nuestra tienda</p>
+                <form action="https://formsubmit.co/berenicealondra2006@gmail.com" method="post", id="contacto">
+                    <fieldset>
+                        <legend>Enviamos un Email</legend>
+                        <label for="first-name-c">Nombre:</label>
+                        <input type="text" id="first-name-c" name="first-name-c" required aria-required="true" placeholder="Juan">
+                        <br>
+                        <label for="last-name-c">Apellido:</label>
+                        <input type="text" id="last-name-c" name="last-name-c" required aria-required="true" placeholder="Lopez">
+                        <br>
+                        <label for="email-c">Email:</label>
+                        <input type="email" id="email-c" name="email-c" required aria-required="true" placeholder="juan_lopez@ejemplo.com">
+                        <br>
+                        <label for="texto">Mensaje:</label>
+                        <input type="text" id="texto" name="texto" required placeholder="Hola...">
+                        <br>
+                        <button type="submit">Enviar :)</button>
+                        <button type="reset"> Restaurar </button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div id="Links">
+            <p>Tambien puedes usar nuestra ayuda de linea telefonica:</p>
+            <a href="tel:899-123-4567" id="Tel">Telefono</a>
+            <br>
+            <p>O siguenos en nuestras redes sociales:</p>
+            <a href="https://www.instagram.com/cherrygummy97/" id="IG">Instagram</a>
+            <br>
+            <a href="https://www.facebook.com/alondra.sanchez.942367?rdid=dDDmxRZZ5nLfVHec&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AFXojyuvr%2F#" id="FB">Facebook</a>
+        </div>
+    </body>
+</html>
