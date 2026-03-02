@@ -28,7 +28,12 @@ describe('Pruebas de Tienda (Productos y Categorías)', () => {
   it('Debería listar todos los productos', async () => {
     const res = await request(app).get('/api/products/viewProducts');
     expect(res.statusCode).toBe(200);
-    expect(Array.isArray(res.body)).toBe(true);
+    expect(typeof res.body).toBe('object');
+    expect(res.body).toHaveProperty('results');
+    expect(Array.isArray(res.body.results)).toBe(true);
+    expect(res.body).toHaveProperty('info');
+    expect(res.body.info).toHaveProperty('totalProductos');
+    expect(res.body.info).toHaveProperty('paginaActual');
   });
 });
 
