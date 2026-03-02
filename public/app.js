@@ -1,16 +1,17 @@
 const URL_BASE = 'http://localhost:3000/api';
-
+let PageUsers = 1;
+let PageProducts = 1;
+let pageShop = 1;
+let currentCatId = "";
+let currentCatNombre = "";
 const categoriesGrid = document.getElementById("categories-grid");
 const productsGrid = document.getElementById("products-grid");
-
 const viewAuth = document.getElementById("view-auth");
 const viewCategories = document.getElementById("view-categories");
 const viewProducts = document.getElementById("view-products");
 const viewAdmin = document.getElementById("view-admin");
-
 const userNameDisp = document.getElementById("userNameDisp");
 const userRoleDisp = document.getElementById("userRoleDisp");
-
 const currentCategoryTitle = document.getElementById("currentCategoryTitle");
 
 
@@ -150,13 +151,16 @@ function openCategory(id, nombre) {
     loadProducts(id, nombre);
 };
 
-async function loadProducts(catId, nombre) {
+async function loadProducts(catId, nombre, page = 1) {
+    currentCatId = catId;
+    currentCatNombre = nombre;
+    pageShop = page;
     const res = await fetch(`${URL_BASE}/products/viewProducts?categoria=${catId}`, {method:'GET'});
-    const products = await res.json();
+    const data = await res.json();
 
     currentCategoryTitle.textContent = nombre;
     productsGrid.innerHTML = "";
-
+    const products = data.results || [];
     products.forEach(p => {
         const fotourl = p.imagenUrl || 'https://res.cloudinary.com/dawgtatxl/image/upload/v1772235626/default_a4kcs2.avif';
         
@@ -175,8 +179,13 @@ async function loadProducts(catId, nombre) {
         </div>
         `;
     });
+    const infoSpan = document.getElementById("shop-page-info");
+    if (infoSpan && data.info) {
+        infoSpan.innerText = `Página ${data.info.paginaActual} de ${data.info.paginasTotales}`;
+    }
     viewCategories.style.display = 'none';
-    viewProducts.style.display = 'block';
+    document.getElementById("view-products").style.display = 'block';
+    window.scrollTo(0, 0);
 };
 
 
@@ -194,13 +203,13 @@ async function updateCategorySelect() {
 };
 
 async function loadAdminData() {
-    const cat = await fetch(`${URL_BASE}/category/viewCategorys`, {
+    const catData = await fetch(`${URL_BASE}/category/viewCategorys`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     }).then(r => r.json());
 
     document.getElementById("admin-list-categories").innerHTML =
-        cat.map(c => {
+        catData.map(c => {
         const fotoUrl = c.imagenUrl || 'https://res.cloudinary.com/dawgtatxl/image/upload/v1772235626/default_a4kcs2.avif';
         return `
         <div class="list-item">
@@ -213,10 +222,10 @@ async function loadAdminData() {
         </div>
         `}).join('');
 
-    const prod = await fetch(`${URL_BASE}/products/viewProducts`, {method: 'GET'}).then(r => r.json());
-
+    const prodData = await fetch(`${URL_BASE}/products/viewProducts?page=${PageProducts}&limit=10`, {method: 'GET'}).then(r => r.json());
+    document.getElementById("page-products").innerText = `Página ${prodData.info.paginaActual} de ${prodData.info.paginasTotales}`;
     document.getElementById("admin-list-products").innerHTML =
-        prod.map(p => {
+        (prodData.results || []).map(p => {
         const fotoUrl = p.imagenUrl || 'https://res.cloudinary.com/dawgtatxl/image/upload/v1772235626/default_a4kcs2.avif';
         return `<div class="list-item">
             <img src="${fotoUrl}" width="50" style="border-radius:5px">
@@ -228,13 +237,14 @@ async function loadAdminData() {
         </div>
         `}).join('');
 
-    const users = await fetch(`${URL_BASE}/users/Users`, {
+    const usersData = await fetch(`${URL_BASE}/users/Users?page=${PageUsers}&limit=10`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     }).then(r => r.json());
-
+    console.log("Usuarios obtenidos:", usersData.results);
+    document.getElementById("page-users").innerText = `Página ${usersData.info.paginaActual} de ${usersData.info.paginasTotales}`;
     document.getElementById("admin-list-users").innerHTML =
-        users.map(u => `
+        (usersData.results || []).map(u => `
         <div class="list-item">
             <span>${u.username} (${u.role})</span>
             <div class="button-container"> 
@@ -603,8 +613,25 @@ function checkAdminButton() {
     } else {
         btnAdmin.style.display = 'none';
     }
-}
+};
 
+function changePageAdmin(tipo, direccion) {
+    if (tipo === 'users') {
+        PageUsers += direccion;
+        if (PageUsers < 1) PageUsers = 1;
+    } else if (tipo === 'products') {
+        PageProducts += direccion;
+        if (PageProducts < 1) PageProducts = 1;
+    }
+    
+    loadAdminData();
+};
 
+function changePageShop(direccion) {
+    const nuevaPagina = pageShop + direccion;
+    if (nuevaPagina >= 1) {
+        loadProducts(currentCatId, currentCatNombre, nuevaPagina);
+    }
+};
 initApp();
 

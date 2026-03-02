@@ -3,10 +3,31 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.getAllUsers = async (req,res,next) => {
-    try{
-        const Users = await User.find().select('-password');
-        res.status(200).json(Users);
-    } catch(error){
+    try {
+        const { page = 1, limit = 10 } = req.query;
+        const pagina = parseInt(page);
+        const limite = parseInt(limit);
+        const saltar = (pagina - 1) * limite;
+        const [users, total] = await Promise.all([
+            User.find()
+                .select('-password')
+                .skip(saltar)
+                .limit(limite)
+                .sort({ createdAt: -1 }),
+            User.countDocuments()
+        ]);
+        const totalPaginas = Math.ceil(total / limite);
+        res.status(200).json({
+            info: {
+                totalUsuarios: total,
+                paginasTotales: totalPaginas,
+                paginaActual: pagina,
+                siguiente: pagina < totalPaginas ? pagina + 1 : null,
+                anterior: pagina > 1 ? pagina - 1 : null
+            },
+            results: users
+        });
+    }catch(error){
         next(error);
         console.error(error);
     }

@@ -60,7 +60,13 @@
         <section id="view-products" style="display: none;">
             <button class="botonback" onclick="showCategoriesView()">← Volver a Categorías</button>
             <h2 id="currentCategoryTitle">Productos</h2>
-            <div id="products-grid" class="grid"></div> </section>
+            <div id="products-grid" class="grid"></div> 
+            <div class="pagination-line" style="margin-top: 20px; text-align: center;">
+                <button onclick="changePageShop(-1)" class="btn-nav">Anterior</button>
+                <span id="shop-page-info" style="margin: 0 15px; font-weight: bold;">Página 1</span>
+                <button onclick="changePageShop(1)" class="btn-nav">Siguiente</button>
+            </div>
+        </section>
 
         <section id="view-admin" style="display: none;">
             <div class="headerapp">
@@ -127,7 +133,7 @@
                         <select id="userRole" required>
                             <option value="">Selecciona un rol</option>
                             <option value="admin">Admin</option>
-                            <option value="customer">Customer</option>
+                            <option value="user">User</option>
                         </select>
                         <button type="submit" style="background-color: #059669; color: white;">Guardar Usuario</button>
                         <button type="Reset" style="background-color: #ef4444; color: white;">Cancelar</button>
@@ -159,11 +165,21 @@
                 <div class="admin-card table-section">
                     <h3>Lista de Productos</h3>
                     <div id="admin-list-products" class="admin-products-list"></div>
+                    <div class="pagination-line">
+                        <button onclick="changePageAdmin('products', -1)">Anterior</button>
+                        <span id="page-products">Página 1</span>
+                        <button onclick="changePageAdmin('products', 1)">Siguiente</button>
+                    </div>
                 </div>
                 
                 <div class="admin-card table-section">
                     <h3>Lista de Usuarios</h3>
                     <div id="admin-list-users"></div>
+                    <div class="pagination-line">
+                        <button onclick="changePageAdmin('users', -1)">⬅️ Anterior</button>
+                        <span id="page-users">Página 1</span>
+                        <button onclick="changePageAdmin('users', 1)">Siguiente ➡️</button>
+                    </div>
                 </div>
             </div>
         </section>

@@ -4,13 +4,33 @@ const cloudinary = require('cloudinary').v2;
 
 exports.getAllProducts = async (req,res,next) => {
     try{
-        const {categoria} = req.query;
+        const {categoria, page = 1, limit = 10} = req.query;
+        const pagina = parseInt(page);
+        const limite = parseInt(limit);
+        const saltar = (pagina - 1) * limite;
         let filtro = {};
         if(categoria){
             filtro.categoria = categoria
         }
-        const products = await Product.find(filtro).populate('categoria')
-        res.status(200).json(products);
+        const [products, total] = await Promise.all([
+            Product.find(filtro)
+                .populate('categoria')
+                .skip(saltar)
+                .limit(limite) 
+                .sort({ createdAt: -1 }), 
+            Product.countDocuments(filtro) 
+        ]);
+        const totalPaginas = Math.ceil(total / limite);
+        res.status(200).json({
+            info: {
+                totalProductos: total,
+                paginasTotales: totalPaginas,
+                paginaActual: pagina,
+                tieneSiguiente: pagina < totalPaginas,
+                tienePrevia: pagina > 1
+            },
+            results: products
+        });
     } catch(error){
         next(error);
         console.error(error);

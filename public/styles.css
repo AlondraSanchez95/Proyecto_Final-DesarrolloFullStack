@@ -337,6 +337,26 @@ button:hover {
     cursor: pointer;
 }
 
+.pagination-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    margin-top: 10px;
+    border-top: 2px solid #f3f4f6; /* La línea que querías */
+    font-size: 0.9rem;
+}
+
+.pagination-line button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 @keyframes slideIn {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
