@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit');
 
 const loginLimit = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 50,
+    max: 10000,
     message: 'Demasiados intentos de inicio de sesión'
 });
 
