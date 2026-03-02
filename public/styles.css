@@ -344,7 +344,7 @@ button:hover {
     gap: 15px;
     padding: 10px;
     margin-top: 10px;
-    border-top: 2px solid #f3f4f6; /* La línea que querías */
+    border-top: 2px solid #f3f4f6;
     font-size: 0.9rem;
 }
 

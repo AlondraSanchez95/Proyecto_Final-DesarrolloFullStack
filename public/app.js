@@ -1,4 +1,6 @@
-const URL_BASE = 'http://localhost:3000/api';
+const URL_BASE = window.location.hostname === 'localhost' 
+   ? 'http://localhost:3000/api' 
+   : 'https://proyecto-final-desarrollofullstack.onrender.com/api';
 let PageUsers = 1;
 let PageProducts = 1;
 let pageShop = 1;
